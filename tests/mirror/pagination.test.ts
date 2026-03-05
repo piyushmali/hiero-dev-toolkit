@@ -13,8 +13,10 @@ describe("Mirror pagination", () => {
   it("iterates transactions across multiple pages", async () => {
     const fetchSpy = vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);
+      const parsed = new URL(url);
+      const timestamp = parsed.searchParams.get("timestamp");
 
-      if (url.includes("timestamp=lt%3A100")) {
+      if (timestamp === "lt:100") {
         return jsonResponse({
           transactions: [{ transaction_id: "tx-2" }, { transaction_id: "tx-3" }],
           links: { next: null }

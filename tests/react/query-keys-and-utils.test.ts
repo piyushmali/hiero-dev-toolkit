@@ -5,7 +5,12 @@ import { hieroQueryKeys } from "../../src/react/query-keys";
 
 describe("React hook utilities", () => {
   it("builds stable query keys", () => {
+    expect(hieroQueryKeys.root()).toEqual(["hiero"]);
     expect(hieroQueryKeys.account("0.0.3")).toEqual(["hiero", "account", "0.0.3"]);
+    expect(hieroQueryKeys.balance("0.0.3")).toEqual(["hiero", "balance", "0.0.3"]);
+    expect(hieroQueryKeys.tokenBalances("0.0.3")).toEqual(["hiero", "token-balances", "0.0.3"]);
+    expect(hieroQueryKeys.schedule("0.0.100")).toEqual(["hiero", "schedule", "0.0.100"]);
+    expect(hieroQueryKeys.nft("0.0.200", 7)).toEqual(["hiero", "nft", "0.0.200", 7]);
     expect(hieroQueryKeys.transactions("0.0.3", 25, "desc")).toEqual([
       "hiero",
       "transactions",

@@ -26,8 +26,7 @@ export function useAccount(accountId: string, options: BaseHookOptions = {}) {
     queryFn: () => mirrorClient.getAccount(accountId),
     enabled: Boolean(accountId) && (options.enabled ?? true),
     staleTime: options.staleTime ?? 20_000,
-    gcTime: options.gcTime,
-    suspense: options.suspense
+    gcTime: options.gcTime
   });
 }
 
@@ -45,8 +44,7 @@ export function useHieroBalance(accountId: string, options: BaseHookOptions = {}
     queryFn: () => mirrorClient.getBalance(accountId),
     enabled: Boolean(accountId) && (options.enabled ?? true),
     staleTime: options.staleTime ?? 10_000,
-    gcTime: options.gcTime,
-    suspense: options.suspense
+    gcTime: options.gcTime
   });
 }
 
@@ -64,8 +62,7 @@ export function useTokenBalances(accountId: string, options: BaseHookOptions = {
     queryFn: () => mirrorClient.getTokenBalances(accountId),
     enabled: Boolean(accountId) && (options.enabled ?? true),
     staleTime: options.staleTime ?? 20_000,
-    gcTime: options.gcTime,
-    suspense: options.suspense
+    gcTime: options.gcTime
   });
 }
 
@@ -101,8 +98,7 @@ export function useInfiniteTransactions(
     getNextPageParam: (lastPage) => lastPage.links.next ?? undefined,
     enabled: Boolean(accountId) && (options.enabled ?? true),
     staleTime: options.staleTime ?? 5_000,
-    gcTime: options.gcTime,
-    suspense: options.suspense
+    gcTime: options.gcTime
   });
 }
 
@@ -137,7 +133,6 @@ export function useScheduledStatus(scheduleId: string, options: BaseHookOptions 
     enabled: Boolean(scheduleId) && (options.enabled ?? true),
     staleTime: options.staleTime ?? 5_000,
     gcTime: options.gcTime,
-    suspense: options.suspense,
     refetchInterval: 5_000
   });
 }
@@ -161,7 +156,6 @@ export function useNftMetadata(
     queryFn: () => mirrorClient.getNftInfo(tokenId, serial),
     enabled: Boolean(tokenId) && Number.isFinite(serial) && (options.enabled ?? true),
     staleTime: options.staleTime ?? 60_000,
-    gcTime: options.gcTime,
-    suspense: options.suspense
+    gcTime: options.gcTime
   });
 }

@@ -3,11 +3,14 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     environment: "node",
+    maxWorkers: 1,
+    fileParallelism: false,
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov"],
       include: ["src/**/*.ts", "src/**/*.tsx"],
       exclude: [
+        "src/**/types.ts",
         "src/**/index.ts",
         "src/mirror/generated/**",
         "src/react/context.tsx",

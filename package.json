@@ -55,19 +55,22 @@
     "react-dom": "^18.3.0 || ^19.0.0"
   },
   "dependencies": {
-    "@hiero-ledger/sdk": "^2.8.0",
+    "@hiero-ledger/sdk": "^2.80.0",
     "lru-cache": "^11.0.0",
     "zod": "^3.24.0"
+  },
+  "overrides": {
+    "bn.js": "5.2.3"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.5",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@vitest/coverage-v8": "^4.0.18",
     "openapi-typescript": "^7.6.1",
     "tsup": "^8.3.5",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
-    "vitest": "^2.1.8"
+    "vitest": "^4.0.18"
   }
 }

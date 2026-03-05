@@ -39,7 +39,6 @@ export interface HieroContextValue {
 
 export interface BaseHookOptions {
   enabled?: boolean;
-  suspense?: boolean;
   staleTime?: number;
   gcTime?: number;
 }

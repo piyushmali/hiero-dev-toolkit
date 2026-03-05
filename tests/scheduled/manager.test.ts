@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { ScheduledTransactionTimeoutError } from "../../src/scheduled/errors";
+import { ScheduledTransactionError, ScheduledTransactionTimeoutError } from "../../src/scheduled/errors";
 import { ScheduledTransactionManager } from "../../src/scheduled/manager";
 import type { ScheduleSdkAdapter } from "../../src/scheduled/types";
 
@@ -128,5 +128,56 @@ describe("ScheduledTransactionManager", () => {
       "0.0.900",
       "302e020100300506032b657004220420example"
     );
+  });
+
+  it("falls back to sdk info when mirror info is unavailable", async () => {
+    const adapter: ScheduleSdkAdapter = {
+      createSchedule: vi.fn(),
+      addSignature: vi.fn(),
+      submitSchedule: vi.fn(),
+      queryInfo: vi.fn().mockResolvedValue({
+        scheduledTransactionId: {
+          toString: () => "0.0.901@123.9"
+        },
+        executedAt: "123.10"
+      })
+    };
+
+    const mirrorClient = {
+      getSchedule: vi.fn().mockRejectedValue(new Error("mirror unavailable"))
+    };
+
+    const manager = new ScheduledTransactionManager({
+      client: {} as never,
+      mirrorClient: mirrorClient as never,
+      adapter
+    });
+
+    const info = await manager.getInfo("0.0.901");
+
+    expect(info.status).toBe("Pending");
+    expect(info.transactionId).toBe("0.0.901@123.9");
+    expect(info.executedAt).toBe("123.10");
+  });
+
+  it("throws when schedule info is unavailable from mirror and sdk", async () => {
+    const adapter: ScheduleSdkAdapter = {
+      createSchedule: vi.fn(),
+      addSignature: vi.fn(),
+      submitSchedule: vi.fn(),
+      queryInfo: vi.fn().mockRejectedValue(new Error("sdk unavailable"))
+    };
+
+    const mirrorClient = {
+      getSchedule: vi.fn().mockRejectedValue(new Error("mirror unavailable"))
+    };
+
+    const manager = new ScheduledTransactionManager({
+      client: {} as never,
+      mirrorClient: mirrorClient as never,
+      adapter
+    });
+
+    await expect(manager.getInfo("0.0.902")).rejects.toBeInstanceOf(ScheduledTransactionError);
   });
 });

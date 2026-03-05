@@ -38,7 +38,7 @@ interface ResolvedMirrorHttpOptions {
  */
 export class MirrorHttpClient {
   private readonly options: ResolvedMirrorHttpOptions;
-  private readonly cache?: LRUCache<string, unknown>;
+  private readonly cache?: LRUCache<string, {}>;
   private consecutiveFailures = 0;
   private circuitOpenedAt?: number;
 
@@ -62,7 +62,7 @@ export class MirrorHttpClient {
     };
 
     if (this.options.cache) {
-      this.cache = new LRUCache({
+      this.cache = new LRUCache<string, {}>({
         ttl: this.options.cache.ttlMs,
         max: this.options.cache.max
       });
@@ -101,7 +101,7 @@ export class MirrorHttpClient {
 
     try {
       const parsed = validator.parse(payload);
-      this.cache?.set(cacheKey, parsed);
+      this.cache?.set(cacheKey, parsed as {});
       return parsed;
     } catch (error: unknown) {
       if (error instanceof ZodError) {
