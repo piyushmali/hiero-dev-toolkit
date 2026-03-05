@@ -1,5 +1,5 @@
 {
-  "name": "@hiero-dev/toolkit",
+  "name": "@piyushmali/hiero-toolkit",
   "version": "0.1.0",
   "description": "Modern, production-minded TypeScript utilities for Hiero networks — typed Mirror Node client, enterprise-grade scheduled transactions manager, React/Next.js integration kit. The go-to DX library for the Hiero ecosystem.",
   "license": "Apache-2.0",
@@ -8,6 +8,9 @@
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
