@@ -43,12 +43,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hiero-dev/toolkit"
+    "url": "git+https://github.com/piyushmali/hiero-dev-toolkit.git"
   },
   "bugs": {
-    "url": "https://github.com/hiero-dev/toolkit/issues"
+    "url": "https://github.com/piyushmali/hiero-dev-toolkit/issues"
   },
-  "homepage": "https://github.com/hiero-dev/toolkit#readme",
+  "homepage": "https://github.com/piyushmali/hiero-dev-toolkit#readme",
   "peerDependencies": {
     "@tanstack/react-query": "^5.60.0",
     "react": "^18.3.0 || ^19.0.0",
