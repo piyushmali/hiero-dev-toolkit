@@ -1,0 +1,73 @@
+{
+  "name": "@hiero-dev/toolkit",
+  "version": "0.1.0",
+  "description": "Modern, production-minded TypeScript utilities for Hiero networks — typed Mirror Node client, enterprise-grade scheduled transactions manager, React/Next.js integration kit. The go-to DX library for the Hiero ecosystem.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE",
+    "openapi-generate.ts"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "generate:openapi": "tsx openapi-generate.ts",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "hiero",
+    "hedera",
+    "mirror-node",
+    "typescript",
+    "react-query",
+    "web3",
+    "sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hiero-dev/toolkit"
+  },
+  "bugs": {
+    "url": "https://github.com/hiero-dev/toolkit/issues"
+  },
+  "homepage": "https://github.com/hiero-dev/toolkit#readme",
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.60.0",
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@hiero-ledger/sdk": "^2.8.0",
+    "lru-cache": "^11.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.5",
+    "@vitest/coverage-v8": "^2.1.8",
+    "openapi-typescript": "^7.6.1",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^2.1.8"
+  }
+}
