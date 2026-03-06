@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Hiero Toolkit Demo",
-  description: "Next.js demo for @hiero-dev/toolkit"
+  description: "Next.js demo for @piyushmali/hiero-toolkit"
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

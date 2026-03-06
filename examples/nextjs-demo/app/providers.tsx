@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-import { HieroProvider } from "@hiero-dev/toolkit";
+import { HieroProvider } from "@piyushmali/hiero-toolkit";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (

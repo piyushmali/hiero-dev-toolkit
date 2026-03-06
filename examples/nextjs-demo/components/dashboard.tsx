@@ -7,7 +7,7 @@ import {
   useInfiniteTransactions,
   useNftMetadata,
   useTokenBalances
-} from "@hiero-dev/toolkit";
+} from "@piyushmali/hiero-toolkit";
 
 export function Dashboard(): JSX.Element {
   const [accountId, setAccountId] = useState("0.0.1001");

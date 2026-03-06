@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@hiero-dev/toolkit": "workspace:*",
+    "@piyushmali/hiero-toolkit": "file:../..",
     "@tanstack/react-query": "^5.60.0",
     "next": "15.2.0",
     "react": "19.0.0",
